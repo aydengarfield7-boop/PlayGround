@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#91d9e8" />
+  <title>Blockwild — Pocket Builder</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='6' y='6' width='52' height='52' rx='13' fill='%2379b957'/%3E%3Cpath d='M18 18h28v28H18z' fill='%23c7ed8e'/%3E%3Cpath d='M18 18h14v14H18zm14 14h14v14H32z' fill='%233f7f43'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./style.css" />
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js"}}</script>
+</head>
+<body>
+  <main id="game" aria-label="Blockwild voxel sandbox">
+    <canvas id="scene"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="brand"><div class="brand-mark"><span></span><span></span><span></span></div><div><strong>BLOCKWILD</strong><small>POCKET BUILDER</small></div></div>
+      <div class="mission"><span class="mission-icon">✦</span><div><b>Make this place yours</b><small>Break blocks · build anything</small></div></div>
+      <button class="icon-button" id="menuButton" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </header>
+
+    <div class="world-label"><span class="live-dot"></span> SUNNY MEADOW <i>•</i> DAY 01</div>
+    <div class="toast" id="toast" role="status"></div>
+    <div class="crosshair" aria-hidden="true"><i></i><i></i></div>
+    <div class="target-name" id="targetName"></div>
+
+    <section class="hotbar" aria-label="Block inventory">
+      <div class="hotbar-title">BACKPACK <span>tap to select</span></div>
+      <div class="slots" id="slots"></div>
+    </section>
+
+    <section class="touch-controls" aria-label="Touch controls">
+      <div class="joystick" id="joystick" aria-label="Move"><div class="joy-ring"><div class="joy-knob" id="joyKnob"></div></div><span class="joy-caption">MOVE</span></div>
+      <div class="action-controls">
+        <button class="action-button break-button" id="breakButton" aria-label="Break block"><span class="pickaxe">⛏</span><small>BREAK</small></button>
+        <button class="action-button place-button" id="placeButton" aria-label="Place block"><span class="cube-icon">＋</span><small>PLACE</small></button>
+        <button class="jump-button" id="jumpButton" aria-label="Jump"><span>↑</span><small>JUMP</small></button>
+      </div>
+    </section>
+
+    <aside class="desktop-hint"><kbd>WASD</kbd> move <kbd>SPACE</kbd> jump <kbd>DRAG</kbd> look <kbd>CLICK</kbd> break <kbd>RIGHT CLICK</kbd> place</aside>
+    <div class="toast-hint" id="hint"><span>☝</span> Drag anywhere to look around</div>
+
+    <div class="modal-backdrop" id="modalBackdrop">
+      <section class="menu-card" role="dialog" aria-modal="true" aria-labelledby="menuTitle">
+        <div class="menu-emblem">▧</div><p class="eyebrow">A LITTLE WORLD, ALL YOURS</p><h1 id="menuTitle">Take a breather?</h1>
+        <p class="menu-copy">Your meadow is right where you left it. Ready to get building?</p>
+        <button class="primary-button" id="resumeButton">BACK TO THE MEADOW <span>→</span></button>
+        <button class="reset-button" id="resetButton">Start a fresh world</button>
+        <div class="menu-footer">PROGRESS SAVES ON THIS DEVICE <span>✦</span></div>
+      </section>
+    </div>
+    <div class="loading" id="loading"><div class="loader-cube">▧</div><b>GROWING YOUR WORLD</b><span>Just a moment…</span></div>
+  </main>
+  <script type="module" src="./game.js"></script>
+</body>
+</html>
